@@ -46,6 +46,10 @@ public class Biblioteca {
 		return librosPorIsbn.get(isbn);
 	}
 
+	public Libro buscarPorCategoria(String categoria) {
+		return librosPorIsbn.get(categoria);
+	}
+	
 	public Set<String> listarCategorias() {
 		return categorias;
 	}
@@ -196,8 +200,11 @@ public class Biblioteca {
 	 *   retorna null).
 	 */
 	public Libro prestarPrimerDisponibleDeCategoria(String categoria) throws LibroNoDisponibleException {
-		// TODO (opcional): reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException(
-				"TODO opcional: completar prestarPrimerDisponibleDeCategoria() en Biblioteca");
+		Libro libro = buscarPorCategoria(categoria);
+		if (libro == null) {
+			throw new LibroNoDisponibleException("No existe ningún libro en esa categoria " + categoria);
+		}
+		libro.prestar();
+		return libro;
 	}
 }
