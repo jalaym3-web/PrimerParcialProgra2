@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+
 import edu.umg.programacion2.examen01.excepciones.LibroNoDisponibleException;
 import edu.umg.programacion2.examen01.modelo.Libro;
 
@@ -156,8 +157,24 @@ public class Biblioteca {
 	 *   excepción.
 	 */
 	public Libro libroMasAntiguoDeCategoria(String categoria) {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar libroMasAntiguoDeCategoria() en Biblioteca");
+		List<Libro> resultado = new ArrayList<>();
+		for (Libro libro : libros) {
+			if (libro.getCategoria().equalsIgnoreCase(categoria)) {
+				resultado.add(libro);
+			}
+			
+
+		Libro masViejo = resultado.get(0);
+
+		for (Libro libro1 : resultado) {
+			if (libro1.getAnioPublicacion() > masViejo.getAnioPublicacion()) {
+				masViejo = libro1;
+			}
+		}
+
+		return masViejo;
+	}
+		return null;
 	}
 
 	/**
