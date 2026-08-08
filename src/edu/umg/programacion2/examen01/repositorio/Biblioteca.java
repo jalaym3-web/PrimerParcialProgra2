@@ -88,9 +88,17 @@ public class Biblioteca {
 	 * - Si el catálogo está vacío, retorna un Map vacío (no null).
 	 */
 	public Map<String, Integer> contarLibrosPorCategoria() {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar contarLibrosPorCategoria() en Biblioteca");
+		Map<String, Integer> conteo = new HashMap<>();
+		
+		for (Libro libro : libros) {
+			String categoria = libro.getCategoria();
+			int cantidadCategoria = conteo.getOrDefault(categoria, 0);
+			conteo.put(categoria, cantidadCategoria + 1);
+		}
+
+		return conteo;
 	}
+
 
 	/**
 	 * PREGUNTA PRÁCTICA 2 (20 pts): completar buscarPorTituloParcial().
